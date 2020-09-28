@@ -18,7 +18,7 @@ class Clientes extends BaseController
 
     }
 
-    public function adicionar()
+    public function add()
     {
         $loadTemplateHelper = new LoadTemplate();
         $loadTemplateHelper->loadTemplateWithView('index');

@@ -5,7 +5,7 @@
     </div>
   </div>
 
-<a href=<?= base_url("clientes/adicionar") ?> class="btn btn-dark mb-4">Adicionar Cliente</a>
+<a href=<?= base_url("clientes/add") ?> class="btn btn-dark mb-4">Adicionar Cliente</a>
 
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
