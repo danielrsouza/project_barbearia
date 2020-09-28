@@ -7,34 +7,37 @@ use App\Helpers\LoadTemplate;
 
 class Clientes extends BaseController
 {
+
+    protected $loadTemplateHelper;
+    protected $ClienteModel;
+
+
+    function __construct()
+    {
+       $this->ClienteModel = new ClientesModel();
+       $this->loadTemplateHelper = new LoadTemplate();
+    }
+
 	public function index()
 	{
-        $ClienteModel = new ClientesModel();
-        $data['clientes'] = $ClienteModel->findAll();
-
-
-        $loadTemplateHelper = new LoadTemplate();
-        $loadTemplateHelper->loadTemplateWithView('lista_clientes', $data);
+        $data['clientes'] = $this->ClienteModel->findAll();
+        $this->loadTemplateHelper->loadTemplateWithView('lista_clientes', $data);
 
     }
 
     public function add()
     {
-        $loadTemplateHelper = new LoadTemplate();
-        $loadTemplateHelper->loadTemplateWithView('index');
+        $this->loadTemplateHelper->loadTemplateWithView('index');
     }
     
     public function store()
     {
-        $loadTemplateHelper = new LoadTemplate();
         $data['sucesso'] = false;
 
-        if ($this->request->getMethod() === 'post') 
-        {
+        if ($this->request->getMethod() === 'post') {
             $data['sucesso'];
-            $ClienteModel = new ClientesModel();
-
-            $ClienteModel->save([
+    
+            $this->ClienteModel->save([
                 'nome' => $this->request->getPost('nome'),
                 'num_whats' => $this->request->getPost('telefone'),
                 'perfil_instagram' => $this->request->getPost('instagram'), 
@@ -45,7 +48,8 @@ class Clientes extends BaseController
 
             $data['sucesso'] = true;
             
-            $loadTemplateHelper->loadTemplateWithView('lista_clientes', $data);
+            $data['clientes'] = $this->ClienteModel->findAll();
+            $this->loadTemplateHelper->loadTemplateWithView('lista_clientes', $data);
         }
     }
 

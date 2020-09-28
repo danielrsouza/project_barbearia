@@ -10,32 +10,34 @@
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Instagram</th>
+                <th>Facebook</th>
+                <th>Profissão</th>
+                <th>Data de Cadastro</th>
             </tr>
         </thead>
         <tbody>
+        <?php foreach($clientes as $cliente) : ?>
             <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>      
+                <td><?= $cliente['nome']?></td>
+                <td><?= $cliente['num_whats']?></td>
+                <td><?= $cliente['perfil_instagram']?></td>
+                <td><?= $cliente['perfil_face']?></td>
+                <td><?= $cliente['profissao']?></td>
+                <td><?= $cliente['data_cadastro']?></td>
+            </tr>
+        <?php endforeach; ?>
         </tbody>
         <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Instagram</th>
+                <th>Facebook</th>
+                <th>Profissão</th>
+                <th>Data de Cadastro</th>
             </tr>
         </tfoot>
     </table>
